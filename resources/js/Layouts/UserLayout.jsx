@@ -1,6 +1,11 @@
-const UserLayout = () => {
+import Navbar from '@/Components/Navbar'
+
+const UserLayout = ({children}) => {
     return (
-        <div>UserLayout</div>
+        <main>
+            <Navbar />
+            {children}
+        </main>
     )
 }
 export default UserLayout
