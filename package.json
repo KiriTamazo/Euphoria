@@ -28,6 +28,7 @@
         "vite": "^4.0.0"
     },
     "dependencies": {
+        "@radix-ui/react-slot": "^1.0.2",
         "@reduxjs/toolkit": "^1.9.5",
         "@uidotdev/usehooks": "^2.0.1",
         "class-variance-authority": "^0.7.0",
