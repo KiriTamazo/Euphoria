@@ -6,9 +6,10 @@
         "build": "vite build"
     },
     "devDependencies": {
+        "@headlessui/react": "^1.4.2",
         "@inertiajs/react": "^1.0.0",
         "@tailwindcss/forms": "^0.5.3",
-        "@vitejs/plugin-react": "^3.0.0",
+        "@vitejs/plugin-react": "^4.0.3",
         "autoprefixer": "^10.4.12",
         "axios": "^1.1.2",
         "cypress": "^12.17.3",
@@ -20,6 +21,8 @@
         "eslint-plugin-react": "^7.33.2",
         "laravel-vite-plugin": "^0.8.0",
         "postcss": "^8.4.18",
+        "react": "^18.2.0",
+        "react-dom": "^18.2.0",
         "tailwind-merge": "^1.14.0",
         "tailwindcss": "^3.2.1",
         "vite": "^4.0.0"
@@ -27,6 +30,7 @@
     "dependencies": {
         "@reduxjs/toolkit": "^1.9.5",
         "@uidotdev/usehooks": "^2.0.1",
+        "class-variance-authority": "^0.7.0",
         "clsx": "^2.0.0",
         "eslint-plugin-react-hooks": "^4.6.0",
         "filepond": "^4.30.4",
@@ -34,13 +38,14 @@
         "filepond-plugin-file-validate-type": "^1.2.8",
         "filepond-plugin-image-preview": "^4.6.11",
         "lodash": "^4.17.21",
+        "lucide-react": "^0.289.0",
         "moment": "^2.29.4",
         "react-filepond": "^7.1.2",
         "react-redux": "^8.1.1",
         "react-select": "^5.7.3",
         "react-toastify": "^9.1.3",
         "swiper": "^9.4.1",
-        "tailwind-merge": "^1.14.0",
+        "tailwindcss-animate": "^1.0.7",
         "vite-plugin-eslint": "^1.8.1",
         "vite-plugin-svgr": "^3.2.0"
     }
