@@ -1,4 +1,5 @@
-/** @type {import('tailwindcss').Config} */
+const defaultTheme = require('tailwindcss/defaultTheme');
+const forms = require('@tailwindcss/forms');
 module.exports = {
     darkMode: ['class'],
     content: [
@@ -16,7 +17,12 @@ module.exports = {
             },
         },
         extend: {
+            fontFamily: {
+                opensans: ['"Open Sans"', ...defaultTheme.fontFamily.sans],
+                sans: ['Roboto', ...defaultTheme.fontFamily.sans],
+            },
             colors: {
+                color:'hsl(var(--text-color))',
                 border: 'hsl(var(--border))',
                 input: 'hsl(var(--input))',
                 ring: 'hsl(var(--ring))',
@@ -72,5 +78,5 @@ module.exports = {
             },
         },
     },
-    plugins: [require('tailwindcss-animate')],
+    plugins: [require('tailwindcss-animate'),forms],
 }
