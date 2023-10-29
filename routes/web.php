@@ -6,7 +6,7 @@ use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 
 Route::get('/', function () {
-    return inertia('Home');
+    return inertia('Website/Home');
 });
 
 Route::get('/dashboard', function () {
