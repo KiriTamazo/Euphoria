@@ -10,12 +10,12 @@ const Navbar = () => {
             <Logo className='w-6 h-6' />           
             <ul className="flex gap-6 items-center">
                 <li>
-                    <NavLink active={component === 'Website/Home'}>Home</NavLink>
+                    <NavLink active={component === 'Website/Home/Index'}>Home</NavLink>
                 </li>
-                <li><NavLink>Products</NavLink></li>
-                <li><NavLink>Blogs</NavLink></li>
-                <li><NavLink>About Us</NavLink></li>
-                <li><NavLink>Contact Us</NavLink></li>
+                <li><NavLink active={component === 'Website/Products/Index'}>Products</NavLink></li>
+                <li><NavLink active={component === 'Website/Blogs/Index'}>Blogs</NavLink></li>
+                <li><NavLink active={component === 'Website/Abouts/Index'}>About Us</NavLink></li>
+                <li><NavLink active={component === 'Website/Contacts/Index'}>Contact Us</NavLink></li>
             </ul>
             <div className="flex gap-8 items-center">
                 <Search className='cursor-pointer' />

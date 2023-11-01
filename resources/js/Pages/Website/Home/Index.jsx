@@ -1,11 +1,11 @@
-import { Button } from '@/Components/ui/button'
 import UserLayout from '@/Layouts/UserLayout'
+import HeroSection from './HeroSection'
 
 const Home = () => {
     return (
-        <div>
-            <Button variant='danger'>Button</Button>
-        </div>
+        <main>
+            <HeroSection />
+        </main>
     )
 }
 Home.layout = page => <UserLayout children={page} title="Welcome" />
