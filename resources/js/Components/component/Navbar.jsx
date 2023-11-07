@@ -1,14 +1,15 @@
 import Logo from '@/assets/logo'
-import { Search, ShoppingBagIcon, User2 } from 'lucide-react'
-import NavLink from './NavLink'
+import { Menu, Search, ShoppingBagIcon, User2 } from 'lucide-react'
+import NavLink from '../NavLink'
 import { usePage } from '@inertiajs/react';
 
 const Navbar = () => {
     const {component} = usePage();
     return (
-        <nav className="container py-4 shadow-md flex items-center justify-between">
+        <nav className="container fixed top-0 right-0 left-0 bg-background z-[100] py-4 shadow-md flex items-center justify-between">
+            <Menu className='block lg:hidden' />
             <Logo className='w-6 h-6' />           
-            <ul className="flex gap-6 items-center">
+            <ul className=" gap-6 items-center lg:flex hidden">
                 <li>
                     <NavLink active={component === 'Website/Home/Index'}>Home</NavLink>
                 </li>

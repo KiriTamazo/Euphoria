@@ -11,8 +11,8 @@ const HeroSection = () => {
     const sliderRef = useRef();
 
     return (
-        <section className='bg-primary min-h-[90vh]'>
-            <Swiper className='h-[90vh] relative'
+        <section className='bg-primary h-screen max-w-[1400px] mx-auto'>
+            <Swiper className='relative min-h-[90vh]'
                 loop={true}
                 modules={[Navigation, Pagination,EffectFade]}
                 spaceBetween={50}
