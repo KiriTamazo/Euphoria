@@ -1,125 +1,25 @@
+/* eslint-disable no-unused-vars */
 import { useState } from 'react';
 import ApplicationLogo from '@/Components/ApplicationLogo';
 import Dropdown from '@/Components/Dropdown';
 import NavLink from '@/Components/NavLink';
 import ResponsiveNavLink from '@/Components/ResponsiveNavLink';
 import { Link } from '@inertiajs/react';
+import DashboardSidebar from '@/Components/component/DashboardSidebar';
 
-export default function Authenticated({ user, header, children }) {
+export default function AuthLayout({ user, header, children }) {
     const [showingNavigationDropdown, setShowingNavigationDropdown] = useState(false);
+    const [menuActive,setMenuActive] =useState(true)
 
     return (
-        <div className="min-h-screen bg-gray-100">
-            <nav className="bg-white border-b border-gray-100">
-                <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                    <div className="flex justify-between h-16">
-                        <div className="flex">
-                            <div className="shrink-0 flex items-center">
-                                <Link href="/">
-                                    <ApplicationLogo className="block h-9 w-auto fill-current text-gray-800" />
-                                </Link>
-                            </div>
-
-                            <div className="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-                                <NavLink href={route('dashboard')} active={route().current('dashboard')}>
-                                    Dashboard
-                                </NavLink>
-                            </div>
-                        </div>
-
-                        <div className="hidden sm:flex sm:items-center sm:ml-6">
-                            <div className="ml-3 relative">
-                                <Dropdown>
-                                    <Dropdown.Trigger>
-                                        <span className="inline-flex rounded-md">
-                                            <button
-                                                type="button"
-                                                className="inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-gray-500 bg-white hover:text-gray-700 focus:outline-none transition ease-in-out duration-150"
-                                            >
-                                                {user.name}
-
-                                                <svg
-                                                    className="ml-2 -mr-0.5 h-4 w-4"
-                                                    xmlns="http://www.w3.org/2000/svg"
-                                                    viewBox="0 0 20 20"
-                                                    fill="currentColor"
-                                                >
-                                                    <path
-                                                        fillRule="evenodd"
-                                                        d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
-                                                        clipRule="evenodd"
-                                                    />
-                                                </svg>
-                                            </button>
-                                        </span>
-                                    </Dropdown.Trigger>
-
-                                    <Dropdown.Content>
-                                        <Dropdown.Link href={route('profile.edit')}>Profile</Dropdown.Link>
-                                        <Dropdown.Link href={route('logout')} method="post" as="button">
-                                            Log Out
-                                        </Dropdown.Link>
-                                    </Dropdown.Content>
-                                </Dropdown>
-                            </div>
-                        </div>
-
-                        <div className="-mr-2 flex items-center sm:hidden">
-                            <button
-                                onClick={() => setShowingNavigationDropdown((previousState) => !previousState)}
-                                className="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 focus:text-gray-500 transition duration-150 ease-in-out"
-                            >
-                                <svg className="h-6 w-6" stroke="currentColor" fill="none" viewBox="0 0 24 24">
-                                    <path
-                                        className={!showingNavigationDropdown ? 'inline-flex' : 'hidden'}
-                                        strokeLinecap="round"
-                                        strokeLinejoin="round"
-                                        strokeWidth="2"
-                                        d="M4 6h16M4 12h16M4 18h16"
-                                    />
-                                    <path
-                                        className={showingNavigationDropdown ? 'inline-flex' : 'hidden'}
-                                        strokeLinecap="round"
-                                        strokeLinejoin="round"
-                                        strokeWidth="2"
-                                        d="M6 18L18 6M6 6l12 12"
-                                    />
-                                </svg>
-                            </button>
-                        </div>
-                    </div>
-                </div>
-
-                <div className={(showingNavigationDropdown ? 'block' : 'hidden') + ' sm:hidden'}>
-                    <div className="pt-2 pb-3 space-y-1">
-                        <ResponsiveNavLink href={route('dashboard')} active={route().current('dashboard')}>
-                            Dashboard
-                        </ResponsiveNavLink>
-                    </div>
-
-                    <div className="pt-4 pb-1 border-t border-gray-200">
-                        <div className="px-4">
-                            <div className="font-medium text-base text-gray-800">{user.name}</div>
-                            <div className="font-medium text-sm text-gray-500">{user.email}</div>
-                        </div>
-
-                        <div className="mt-3 space-y-1">
-                            <ResponsiveNavLink href={route('profile.edit')}>Profile</ResponsiveNavLink>
-                            <ResponsiveNavLink method="post" href={route('logout')} as="button">
-                                Log Out
-                            </ResponsiveNavLink>
-                        </div>
-                    </div>
-                </div>
-            </nav>
-
-            {header && (
-                <header className="bg-white shadow">
-                    <div className="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">{header}</div>
-                </header>
-            )}
-
-            <main>{children}</main>
-        </div>
+        <>
+            {/* // <div className="min-h-screen  bg-gray-100"> */}
+            <DashboardSidebar menuActive={menuActive} setMenuActive={setMenuActive} />
+            <main className={`w-full min-h-screen bg-slate-300 ${menuActive ? 'pl-[200px]' : 'pl-[50px]'} transition-all duration-500 ease-in-out`}>
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ullam quaerat corporis ratione delectus sequi, illum quisquam? Sint unde dolores perferendis, dolorem suscipit amet earum nobis magni porro saepe repellat quod quas, corporis voluptatum nihil natus aperiam numquam. Commodi ullam magnam itaque expedita excepturi pariatur facilis quo libero explicabo, ad illo officiis consequatur, earum at culpa. Deserunt, expedita. Dolore magni culpa praesentium nobis itaque numquam excepturi eaque illo corrupti, natus quia laborum eos in ipsum omnis dolorum impedit voluptas delectus distinctio unde quidem veniam laboriosam? Doloribus quidem ex pariatur sunt optio a nam possimus error, officiis minima dignissimos impedit eaque dolorum vitae nulla atque nihil cumque amet maiores sed at. Illo reiciendis dicta impedit officiis eius quibusdam! Incidunt, cum ratione quae quos et tenetur deserunt, est perferendis aliquam quasi expedita pariatur eveniet soluta culpa voluptas neque sed quas fuga reiciendis! Consequatur soluta placeat sequi molestiae, ullam repellendus nemo, possimus eligendi pariatur vitae magni, unde nisi rerum. Corporis eligendi esse fugiat dolorum laudantium maiores quibusdam tempora. Doloremque illum, esse ad fugiat consectetur ab numquam provident saepe similique animi distinctio atque laudantium, deleniti consequuntur! Ipsa odit quibusdam doloribus tenetur nihil perferendis eius! Corrupti sunt recusandae iste perspiciatis? Aliquam, earum a ipsum incidunt, architecto eos illum illo fugiat quas non tempora, commodi perspiciatis doloribus esse fugit? Veritatis magni, iusto maiores sapiente fugit quae dolores fuga, eius veniam, deserunt odio tempore vitae iure suscipit magnam soluta. Eaque totam aperiam similique assumenda placeat eius quia a? Pariatur, laborum? Iure dicta maxime excepturi neque quo labore modi. Nihil autem inventore sapiente doloribus hic incidunt alias. Veniam libero adipisci asperiores, dolore earum id vitae debitis! Consectetur culpa consequatur molestiae quia. Illo animi quos distinctio iusto fuga nihil ducimus eum. Eveniet, totam officiis! Totam unde mollitia voluptate vel assumenda nisi dolore beatae repellendus, accusantium doloribus eius deleniti porro animi voluptas iste nulla necessitatibus autem minus earum inventore asperiores aliquam qui et rem? Quae tenetur consequuntur natus, laborum, reiciendis assumenda, veritatis ea eaque nesciunt impedit eveniet iure explicabo soluta quaerat nostrum eligendi nisi laboriosam voluptates rerum autem voluptas ratione! Provident aliquid, maiores incidunt perferendis expedita odit molestiae commodi ullam sint nisi possimus quod vero at porro quisquam veritatis fugiat voluptates? Ratione ex deleniti, quis delectus, adipisci reprehenderit amet dignissimos magni similique alias modi enim odio fuga, deserunt provident accusamus voluptatum consequatur quam? Doloremque labore unde ab nemo quibusdam consequatur similique culpa quisquam illo aliquid incidunt odio voluptatibus reprehenderit voluptatem itaque mollitia fuga, commodi praesentium dolorum aperiam. Possimus, animi rem tempore autem ab excepturi vitae labore explicabo quasi veritatis? Vel, fuga atque nihil ullam iste at consequatur nesciunt ad cum reprehenderit dicta libero quos aut error animi minus ipsa, illum enim ut quam ipsum, natus tempore. Et, harum. Dolor deserunt itaque quae maxime quo. Cumque molestiae alias dolorum expedita iure fugit. Sapiente assumenda quibusdam est voluptates? Quis, consequuntur. Repellendus quia nobis explicabo, fugit a, sapiente tempora deserunt deleniti corrupti laboriosam voluptates rerum labore dolorem unde modi distinctio quaerat! Perferendis sint nobis obcaecati, laborum laudantium cupiditate illo sapiente nesciunt rem, dolorem incidunt.
+                {children}
+            </main>
+            {/* </div> */}
+        </>
     );
 }
