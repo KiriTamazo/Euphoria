@@ -1,5 +1,6 @@
 /* eslint-disable no-unused-vars */
 
+import { sidebarLinks } from '@/helpers/links'
 import { ChevronLeft } from 'lucide-react'
 import { useState } from 'react'
 
@@ -17,7 +18,16 @@ const DashboardSidebar = ({menuActive,setMenuActive}) => {
                 <ChevronLeft className={`${menuActive ? '': 'rotate-180 hidden'} ${menuHover ? '!block':''} cursor-pointer absolute  transition duration-500 ease-in-out -right-3 top-5 bg-slate-400 w-7 h-7 rounded-full`} />
             </div>
             <div className="h-[92%] p-4 overflow-y-auto">
-            DashboardSidebar
+                <ul>
+                    {sidebarLinks?.map((link,i)=>{
+                        console.log(link)
+                        return   <li key={i}>
+                            {link?.icon}
+                            <p>{link?.name}</p>
+                        </li>
+
+                    })}
+                </ul>
             </div>
         </aside>
     )
