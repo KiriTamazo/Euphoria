@@ -12,23 +12,20 @@ const DashboardSidebar = ({menuActive,setMenuActive}) => {
                 setMenuHover(true)}}
         }
         onMouseLeave={()=>setMenuHover(false)}
-        className={`${menuActive ? 'w-[200px]' :'w-[50px]'} ${menuHover ? '!w-[200px]' : ''} bg-slate-200 z-50 fixed left-0 top-0 h-screen transition-all duration-500 ease-in-out inline-block` }>
+        className={`${menuActive || menuHover ? 'w-[250px]' :'w-[90px]'} bg-slate-200 z-50 fixed left-0 top-0 h-screen transition-all duration-500 ease-in-out inline-block` }>
             <div onClick={()=>setMenuActive(!menuActive)} className="h-[8%] flex justify-between relative p-4">
                 <p>Logo</p>
                 <ChevronLeft className={`${menuActive ? '': 'rotate-180 hidden'} ${menuHover ? '!block':''} cursor-pointer absolute  transition duration-500 ease-in-out -right-3 top-5 bg-slate-400 w-7 h-7 rounded-full`} />
             </div>
-            <div className="h-[92%] p-4 overflow-y-auto">
-                <ul>
-                    {sidebarLinks?.map((link,i)=>{
-                        console.log(link)
-                        return   <li key={i}>
-                            {link?.icon}
-                            <p>{link?.name}</p>
-                        </li>
+            <ul className="h-[92%] overflow-hidden">
+                {sidebarLinks?.map((link,i)=>{
+                    return   <li className={`${menuActive || menuHover ? '':''}  flex transition-all duration-500 items-center ease-in-out   py-3  rounded bg-blue-200 my-2 px-2 mx-4`} key={i}>
+                        <span className={`inline-block ${menuActive || menuHover ? '':''} ml-2`}> {link?.icon}</span> 
+                        <p className={`${menuActive || menuHover ? 'ml-4 opacity-100' :'opacity-0'} flex-1 transition-all duration-500  ease-in-out`}>{link?.name}</p>
+                    </li>
 
-                    })}
-                </ul>
-            </div>
+                })}
+            </ul>
         </aside>
     )
 }

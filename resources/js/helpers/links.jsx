@@ -4,11 +4,11 @@ export const sidebarLinks = [
     {
         name:'Dashboard',
         link:'',
-        icon :<HomeIcon />,
+        icon :<HomeIcon/>,
     },
     {
         name:'User',
         link:'',
-        icon :<User />,
+        icon :<User/>,
     }
 ]
