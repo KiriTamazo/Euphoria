@@ -1,4 +1,4 @@
-import { HomeIcon, User } from 'lucide-react';
+import { HomeIcon, User,Layers2  } from 'lucide-react';
 
 export const sidebarLinks = [
     {
@@ -10,5 +10,10 @@ export const sidebarLinks = [
         name:'User',
         link:'',
         icon :<User/>,
+    },
+    {
+        name:'Category',
+        link:'',
+        icon :<Layers2 />,
     }
 ]
