@@ -59,6 +59,7 @@
         @apply bg-background text-foreground;
     }
 } */
+
 body {
     @apply bg-background;
 }
