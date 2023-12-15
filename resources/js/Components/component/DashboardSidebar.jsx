@@ -3,6 +3,7 @@
 import { sidebarLinks } from '@/helpers/links'
 import { ChevronLeft } from 'lucide-react'
 import { useState } from 'react'
+import { Button } from '../ui/button'
 
 const DashboardSidebar = ({menuActive,setMenuActive}) => {
     const [menuHover,setMenuHover] = useState(false)
@@ -12,12 +13,12 @@ const DashboardSidebar = ({menuActive,setMenuActive}) => {
                 setMenuHover(true)}}
         }
         onMouseLeave={()=>setMenuHover(false)}
-        className={`${menuActive || menuHover ? 'w-[250px]' :'w-[90px]'} cursor-pointer bg-slate-200 z-50 fixed left-0 top-0 h-screen transition-all duration-500 ease-in-out inline-block` }>
+        className={`${menuActive || menuHover ? 'w-[250px]' :'w-[90px]'} cursor-pointer bg-slate-200 z-50 fixed left-0 top-0 h-screen transition-all duration-500 ease-in-out flex flex-col` }>
             <div onClick={()=>setMenuActive(!menuActive)} className=" flex justify-between relative p-4">
                 <p>Logo</p>
                 <ChevronLeft className={`${menuActive ? '': 'rotate-180 opacity-0 invisible'} ${menuHover ? 'opacity-100 !visible':''} cursor-pointer absolute  transition duration-500 ease-in-out -right-3 top-5 bg-slate-400 w-7 h-7 rounded-full`} />
             </div>
-            <ul className="flex flex-col overflow-x-hidden">
+            <ul className="flex flex-col flex-1 overflow-x-hidden">
                 {sidebarLinks?.map((link,i)=>{
                     return   (
                         <li key={i}>
@@ -29,6 +30,7 @@ const DashboardSidebar = ({menuActive,setMenuActive}) => {
 
                 })}
             </ul>
+            <Button className="w-[90%] mb-2 bg-danger !mx-auto">Logout</Button>
         </aside>
     )
 }
