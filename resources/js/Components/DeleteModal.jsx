@@ -24,7 +24,7 @@ const DeleteModal = ({modal=false,setModal,handleDelete,btnText='Delete',title='
                     <X className='border-danger border-4 text-danger mx-auto my-4 rounded-full w-16 h-16  p-2' />
                 </DialogHeader>
                 <DialogHeader className='text-center'>
-                    <DialogTitle className="text-2xl text-color text-center">{title}</DialogTitle>
+                    <DialogTitle className="text-2xl font-semibold text-color text-center">{title}</DialogTitle>
                     <DialogDescription className='py-4 text-center'>
                         {description}
                     </DialogDescription>
@@ -32,9 +32,7 @@ const DeleteModal = ({modal=false,setModal,handleDelete,btnText='Delete',title='
                
                 <DialogFooter>
                     <DialogClose className='flex-1' asChild>
-                        <Button type="button" variant="secondary">
-              Close
-                        </Button>
+                        <Button type="button" variant="secondary">Close</Button>
                     </DialogClose>
                     <Button className='flex-1' onClick={handleDelete} variant='danger'>Delete</Button>
                 </DialogFooter>
