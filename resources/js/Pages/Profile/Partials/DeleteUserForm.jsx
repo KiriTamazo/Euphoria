@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import { useRef, useState } from 'react';
 import InputError from '@/Components/InputError';
 import InputLabel from '@/Components/InputLabel';
@@ -54,7 +55,7 @@ export default function DeleteUserForm({ className = '' }) {
 
             <Button variant='danger' onClick={confirmUserDeletion}>Delete Account</Button>
 
-            <Modal show={confirmingUserDeletion} onClose={closeModal}>
+            {/* <Modal show={confirmingUserDeletion} onClose={closeModal}>
                 <form onSubmit={deleteUser} className="p-6">
                     <h2 className="text-lg font-medium text-gray-900">
                         Are you sure you want to delete your account?
@@ -91,7 +92,7 @@ export default function DeleteUserForm({ className = '' }) {
                         </Button>
                     </div>
                 </form>
-            </Modal>
+            </Modal> */}
         </section>
     );
 }

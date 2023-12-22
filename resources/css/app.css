@@ -56,3 +56,6 @@ html {
 body {
     @apply bg-background;
 }
+.adminLayout {
+    @apply py-4 px-6;
+}
