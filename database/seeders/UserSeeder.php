@@ -8,12 +8,14 @@ use Illuminate\Database\Seeder;
 
 class UserSeeder extends Seeder
 {
-    /**
-     * Run the database seeds.
-     */
     public function run(): void
     {
-        User::factory(['email' => 'admin@gmail.com'])->create();
+        User::factory(['email' => 'superadmin@gmail.com', 'role_id' => 1])->create();
+        User::factory(['email' => 'admin@gmail.com', 'role_id' => 2])->create();
         User::factory(['email' => 'user@gmail.com'])->create();
+        User::factory(['email' => fake()->safeEmail()])->create();
+        User::factory(['email' => fake()->safeEmail()])->create();
+        User::factory(['email' => fake()->safeEmail()])->create();
+        User::factory(['email' => fake()->safeEmail()])->create();
     }
 }

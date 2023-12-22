@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\AdminDashboardController;
+use App\Http\Controllers\AdminUserController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
@@ -9,9 +11,16 @@ Route::get('/', function () {
     return inertia('Website/Home/Index');
 });
 
-Route::get('/dashboard', function () {
-    return inertia('Dashboard/Dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
+
+Route::name('admin.')->middleware(['auth', 'verified'])->group(function () {
+    Route::get('/admin/dashboard', [AdminDashboardController::class, 'index'])->name('dashboard');
+
+    // users
+    Route::get('/admin/users', [AdminUserController::class, 'index'])->name('users');
+    Route::post('/admin/users', [AdminUserController::class, 'store'])->name('users.store');
+    Route::post('/admin/users/{user:id}', [AdminUserController::class, 'update'])->name('users.update');
+    Route::delete('/admin/users/{user:id}', [AdminUserController::class, 'destroy'])->name('users.destroy');
+});
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
