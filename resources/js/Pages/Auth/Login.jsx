@@ -15,7 +15,6 @@ export default function Login({ status, canResetPassword }) {
         password: '',
         remember: false,
     });
-    console.log(window.route('dashboard'))
 
     useEffect(() => {
         return () => {
