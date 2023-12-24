@@ -18,15 +18,15 @@ const Paginator = ({  pageCount,datas }) => {
             previousLabel={<ChevronLeft className='w-5 h-5' />}
             nextLabel={<ChevronRight className='w-5 h-5' />}
             hrefBuilder={hrefBuilder}
-            containerClassName="mx-4 w-fit flex gap-2"
+            containerClassName="mx-4 min-w-[500px] w-fit flex justify-center gap-2"
             activeClassName="bg-primary"
             previousLinkClassName="page-link "
             nextLinkClassName="page-link "
             disabledClassName="disabled"
             breakClassName=" min-w-[20px] flex justify-center"
             pageClassName="page_item"
-            previousClassName={`page_item [&>a]:!px-2 ${datas?.prev_page_url ? '': 'hidden'}`}
-            nextClassName={`page_item [&>a]:!px-2 ${datas?.next_page_url ? '': 'hidden'}`}
+            previousClassName={`page_item flex [&>a]:!px-2 ${datas?.prev_page_url ? '': 'hidden'}`}
+            nextClassName={`page_item flex [&>a]:!px-2 ${datas?.next_page_url ? '': 'hidden'}`}
             breakLinkClassName="break-link"
             activeLinkClassName="text-white"
             initialPage={datas?.current_page - 1}
