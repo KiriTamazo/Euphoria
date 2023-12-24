@@ -9,7 +9,7 @@ class AdminUserController extends Controller
 {
     public function index(User $user)
     {
-        return inertia('User/Index', ['users' => $user->paginate(1)]);
+        return inertia('User/Index', ['users' => $user->paginate(2)]);
     }
     public function store()
     {

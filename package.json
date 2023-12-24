@@ -6,7 +6,6 @@
         "build": "vite build"
     },
     "devDependencies": {
-        "@headlessui/react": "^1.4.2",
         "@inertiajs/react": "^1.0.0",
         "@tailwindcss/forms": "^0.5.3",
         "@vitejs/plugin-react": "^4.0.3",
@@ -44,6 +43,7 @@
         "lucide-react": "^0.289.0",
         "moment": "^2.29.4",
         "react-filepond": "^7.1.2",
+        "react-paginate": "^8.2.0",
         "react-redux": "^8.1.1",
         "react-select": "^5.7.3",
         "react-toastify": "^9.1.3",

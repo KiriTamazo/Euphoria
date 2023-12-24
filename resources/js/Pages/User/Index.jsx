@@ -1,8 +1,11 @@
 /* eslint-disable no-unused-vars */
 import Breadcrumb from '@/Components/Breadcrumb'
+import Paginator from '@/Components/Paginator';
 import  Table  from '@/Components/Table'
 import { TableCell } from '@/Components/ui/table';
 import AuthLayout from '@/Layouts/AuthenticatedLayout'
+import { router } from '@inertiajs/react';
+import { useCallback } from 'react';
 const items = [
     { label: 'Home', link: '/' },
     {
@@ -22,6 +25,10 @@ const data = [
     // Add more data rows as needed
 ];
 const Index = ({users}) => {
+    // const handlePageClick = useCallback((event) =>{
+    //     console.log('here')
+    //     router.visit(users?.links[event.selected + 1]?.url)
+    // },[router,users])
     return (
         <section className='adminLayout'>
             <Breadcrumb items={items} />
@@ -35,7 +42,8 @@ const Index = ({users}) => {
                 columns={columns} datas={users} />
                
             
-            User</section>
+            User
+        </section>
     )
 }
 Index.layout = (page) => <AuthLayout>{page}</AuthLayout>

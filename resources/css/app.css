@@ -56,6 +56,12 @@ html {
 body {
     @apply bg-background;
 }
-.adminLayout {
+.admin__layout {
     @apply py-4 px-6;
+}
+.page_item a {
+    @apply py-1 px-3 flex justify-center items-center;
+}
+.page_item {
+    @apply rounded min-w-[20px] hover:bg-primary/80 transition-all duration-300 ease-linear hover:text-white cursor-pointer;
 }

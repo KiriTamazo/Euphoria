@@ -1,9 +1,11 @@
 /* eslint-disable no-unused-vars */
+import { router } from '@inertiajs/react'
 import Paginator from './Paginator'
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from './ui/table'
+import { useCallback } from 'react'
 
 const Index = ({datas,columns,renderItem,showPagination=true}) => {
-    console.log(datas)
+   
     return (
         <>
             <Table>
@@ -40,7 +42,7 @@ const Index = ({datas,columns,renderItem,showPagination=true}) => {
             </Table>
             {
                 ((showPagination && datas?.links?.length >= 3))  &&
-    <Paginator links={datas.links} currentPage={datas.current_page} />
+        <Paginator datas={datas} pageCount={datas?.last_page}  />
             }
         </>
     )
