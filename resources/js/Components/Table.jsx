@@ -1,8 +1,7 @@
 /* eslint-disable no-unused-vars */
-import { router } from '@inertiajs/react'
 import Paginator from './Paginator'
-import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from './ui/table'
-import { useCallback } from 'react'
+import { Table, TableBody,  TableHead, TableHeader, TableRow } from './ui/table'
+import { memo } from 'react'
 
 const Index = ({datas,columns,renderItem,showPagination=true}) => {
    
@@ -47,4 +46,4 @@ const Index = ({datas,columns,renderItem,showPagination=true}) => {
         </>
     )
 }
-export default Index
+export default memo(Index)

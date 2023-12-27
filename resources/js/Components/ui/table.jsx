@@ -62,6 +62,14 @@ const TableCell = forwardRef(({ className, ...props }, ref) => (
 ))
 TableCell.displayName = 'TableCell'
 
+const TableAction = forwardRef(({ className, ...props }, ref) => (
+    <td
+        ref={ref}
+        className={cn('p-4 flex gap-2 align-middle [&:has([role=checkbox])]:pr-0', className)}
+        {...props} />
+))
+TableAction.displayName = 'TableAction'
+
 const TableCaption = forwardRef(({ className, ...props }, ref) => (
     <caption
         ref={ref}
@@ -79,4 +87,5 @@ export {
     TableRow,
     TableCell,
     TableCaption,
+    TableAction
 }
