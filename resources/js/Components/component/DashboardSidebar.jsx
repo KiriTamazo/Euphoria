@@ -13,6 +13,9 @@ const DashboardSidebar = ({menuActive,setMenuActive}) => {
     const handleLogout = () =>{
         router.post('logout')
     }
+    const handleRedirect = (link) =>{
+        router.visit(window.route(link))
+    }
     
     return (
         <aside onMouseEnter={()=>{
@@ -28,7 +31,7 @@ const DashboardSidebar = ({menuActive,setMenuActive}) => {
             <ul className="flex flex-col flex-1 overflow-x-hidden">
                 {sidebarLinks?.map((link,i)=>{
                     return   (
-                        <li key={i}>
+                        <li key={i} onClick={()=>handleRedirect(link?.url)}>
                             <div className='flex my-[.4rem] py-2 px-2 mx-4 rounded bg-primary/20 text-primary  items-center  '>
                                 <span className={'inline-flex justify-center items-center ml-[.7rem]'}> {link?.icon}</span> 
                                 <p className={'ml-4  text-base tracking-wide truncate'}>{link?.name}</p>

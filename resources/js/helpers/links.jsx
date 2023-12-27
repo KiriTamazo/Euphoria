@@ -3,22 +3,22 @@ import { HomeIcon, User,Layers2, Package  } from 'lucide-react';
 export const sidebarLinks = [
     {
         name:'Dashboard',
-        link:'',
+        url:'admin.dashboard',
         icon :<HomeIcon  className='w-5 h-5'/>,
     },
     {
         name:'User',
-        link:'',
+        url:'admin.users',
         icon :<User className='w-5 h-5'/>,
     },
     {
         name:'Category',
-        link:'',
+        url:'admin.categories',
         icon :<Layers2 className='w-5 h-5' />,
     },
     {
         name:'Products',
-        link:'',
+        url:'admin.products',
         icon :<Package className='w-5 h-5' />,
     }
 ]

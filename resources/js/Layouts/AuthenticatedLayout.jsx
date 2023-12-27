@@ -1,15 +1,15 @@
 /* eslint-disable no-unused-vars */
 import { useState } from 'react';
-import ApplicationLogo from '@/Components/ApplicationLogo';
-import NavLink from '@/Components/NavLink';
-import ResponsiveNavLink from '@/Components/ResponsiveNavLink';
-import { Link } from '@inertiajs/react';
 import DashboardSidebar from '@/Components/component/DashboardSidebar';
+import { Toaster } from '@/Components/ui/toaster';
+import { useEffect } from 'react';
+import { usePage } from '@inertiajs/react';
 
 export default function AuthLayout({ user, header, children }) {
-    const [showingNavigationDropdown, setShowingNavigationDropdown] = useState(false);
     const [menuActive,setMenuActive] =useState(true)
+    useEffect(()=>{
 
+    },[])
     return (
         <>
             {/* // <div className="min-h-screen  bg-gray-100"> */}
@@ -17,6 +17,7 @@ export default function AuthLayout({ user, header, children }) {
             <main className={`w-full min-h-screen  ${menuActive ? 'pl-[250px]' : 'pl-[90px]'} transition-all duration-500 ease-in-out`}>
                 {children}
             </main>
+            <Toaster />
             {/* </div> */}
         </>
     );
