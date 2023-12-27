@@ -9,7 +9,7 @@ class AdminUserController extends Controller
 {
     public function index(User $user)
     {
-        return inertia('User/Index', ['users' => $user->paginate(2)]);
+        return inertia('User/Index', ['users' => $user->paginate(10)]);
     }
     public function store()
     {
@@ -17,7 +17,9 @@ class AdminUserController extends Controller
     public function update()
     {
     }
-    public function destroy()
+    public function destroy(User $user)
     {
+        $user->delete();
+        return back()->with('success', 'User deleted successfully');
     }
 }
