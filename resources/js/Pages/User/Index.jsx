@@ -1,11 +1,13 @@
 /* eslint-disable no-unused-vars */
 import Breadcrumb from '@/Components/Breadcrumb'
-import Paginator from '@/Components/Paginator';
+import DeleteModal from '@/Components/DeleteModal';
 import  Table  from '@/Components/Table'
-import { TableCell } from '@/Components/ui/table';
+import { Button } from '@/Components/ui/button';
+import { TableAction, TableCell } from '@/Components/ui/table';
 import AuthLayout from '@/Layouts/AuthenticatedLayout'
 import { router } from '@inertiajs/react';
-import { useCallback } from 'react';
+import { useState } from 'react';
+import UserModal from './UserModal';
 const items = [
     { label: 'Home', link: '/' },
     {
@@ -14,35 +16,50 @@ const items = [
     }
 ]
 const columns = [
-    { label: 'Invoice', className: 'w-[100px]' },
-    { label: 'Status' },
-    { label: 'Method' },
-    { label: 'Amount', className: 'text-right' },
+    { label: 'Id', className: 'w-[100px]' },
+    { label: 'Name' ,className: 'min-w-[150px]'},
+    { label: 'Email' },
+    { label: 'Action', className: '' },
 ];
 
-const data = [
-    { invoice: 'INV001', status: 'Paid', method: 'Credit Card', amount: '$250.00' },
-    // Add more data rows as needed
-];
 const Index = ({users}) => {
-    // const handlePageClick = useCallback((event) =>{
-    //     console.log('here')
-    //     router.visit(users?.links[event.selected + 1]?.url)
-    // },[router,users])
+    const [deleteModal,setDeleteModal] = useState(false)
+    const [modal,setModal] = useState(false)
+    const [selectedId,setSelectedId] = useState(null);
+    const handleDelete = () =>{
+        router.delete(window.route('admin.users.destroy',{user:selectedId}),{
+            preserveScroll: true
+        })
+    }
     return (
-        <section className='adminLayout'>
+        <section className='admin__layout bg-slate-200'>
             <Breadcrumb items={items} />
-            <Table 
-                renderItem={
-                    (data)=>(
-                        <>
-                            <TableCell>{data?.id}</TableCell>
-                        </>)
-                }
-                columns={columns} datas={users} />
-               
-            
-            User
+            <div className='bg-white py-6 px-8 rounded-md'>
+                <div className='flex justify-between items-center mb-8'>
+                    <h1 className='text-xl '>Users</h1>
+                    <Button>Add User</Button>
+                </div>
+                <Table 
+                    renderItem={
+                        (data,i)=>{                           
+                            return(
+                                <>
+                                    <TableCell>{data?.id}</TableCell>
+                                    <TableCell>{data?.name}</TableCell>
+                                    <TableCell>{data?.email}</TableCell>
+                                    <TableAction>
+                                        <Button>Edit</Button>
+                                        <Button variant="danger" onClick={()=>{
+                                            setDeleteModal(true)
+                                            setSelectedId(data?.id)
+                                        }}>Delete</Button>
+                                    </TableAction>
+                                </>)}
+                    }
+                    columns={columns} datas={users} />
+            </div>
+            <DeleteModal handleDelete={handleDelete} modal={deleteModal} setModal={setDeleteModal} />
+            <UserModal selectedId={selectedId} modal={modal} setModal={setModal} />
         </section>
     )
 }
