@@ -26,6 +26,11 @@ const Index = ({users}) => {
     const [deleteModal,setDeleteModal] = useState(false)
     const [modal,setModal] = useState(false)
     const [selectedId,setSelectedId] = useState(null);
+    const [type,setType] = useState(null);
+    const handleOpenModal = (type)=>{
+        setModal(true)
+        setType(type)
+    }
     const handleDelete = () =>{
         router.delete(window.route('admin.users.destroy',{user:selectedId}),{
             preserveScroll: true
@@ -37,7 +42,7 @@ const Index = ({users}) => {
             <div className='bg-white py-6 px-8 rounded-md'>
                 <div className='flex justify-between items-center mb-8'>
                     <h1 className='text-xl '>Users</h1>
-                    <Button>Add User</Button>
+                    <Button onClick={()=>handleOpenModal('create')}>Add User</Button>
                 </div>
                 <Table 
                     renderItem={
@@ -48,7 +53,10 @@ const Index = ({users}) => {
                                     <TableCell>{data?.name}</TableCell>
                                     <TableCell>{data?.email}</TableCell>
                                     <TableAction>
-                                        <Button>Edit</Button>
+                                        <Button onClick={()=>{
+                                            handleOpenModal('edit')
+                                            setSelectedId(data?.id)
+                                        }}>Edit</Button>
                                         <Button variant="danger" onClick={()=>{
                                             setDeleteModal(true)
                                             setSelectedId(data?.id)
@@ -59,7 +67,7 @@ const Index = ({users}) => {
                     columns={columns} datas={users} />
             </div>
             <DeleteModal handleDelete={handleDelete} modal={deleteModal} setModal={setDeleteModal} />
-            <UserModal selectedId={selectedId} modal={modal} setModal={setModal} />
+            <UserModal type={type} selectedId={selectedId} modal={modal} setModal={setModal} />
         </section>
     )
 }
