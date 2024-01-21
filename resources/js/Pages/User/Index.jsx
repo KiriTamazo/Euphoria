@@ -25,14 +25,14 @@ const columns = [
 const Index = ({users}) => {
     const [deleteModal,setDeleteModal] = useState(false)
     const [modal,setModal] = useState(false)
-    const [selectedId,setSelectedId] = useState(null);
+    const [selectedUser,setSelectedUser] = useState(null);
     const [type,setType] = useState(null);
     const handleOpenModal = (type)=>{
         setModal(true)
         setType(type)
     }
     const handleDelete = () =>{
-        router.delete(window.route('admin.users.destroy',{user:selectedId}),{
+        router.delete(window.route('admin.users.destroy',{user:selectedUser?.id}),{
             preserveScroll: true
         })
     }
@@ -46,20 +46,20 @@ const Index = ({users}) => {
                 </div>
                 <Table 
                     renderItem={
-                        (data,i)=>{                           
+                        (user,i)=>{                           
                             return(
                                 <>
-                                    <TableCell>{data?.id}</TableCell>
-                                    <TableCell>{data?.name}</TableCell>
-                                    <TableCell>{data?.email}</TableCell>
+                                    <TableCell>{user?.id}</TableCell>
+                                    <TableCell>{user?.name}</TableCell>
+                                    <TableCell>{user?.email}</TableCell>
                                     <TableAction>
                                         <Button onClick={()=>{
                                             handleOpenModal('edit')
-                                            setSelectedId(data?.id)
+                                            setSelectedUser(user)
                                         }}>Edit</Button>
                                         <Button variant="danger" onClick={()=>{
                                             setDeleteModal(true)
-                                            setSelectedId(data?.id)
+                                            setSelectedUser(user)
                                         }}>Delete</Button>
                                     </TableAction>
                                 </>)}
@@ -67,7 +67,7 @@ const Index = ({users}) => {
                     columns={columns} datas={users} />
             </div>
             <DeleteModal handleDelete={handleDelete} modal={deleteModal} setModal={setDeleteModal} />
-            <UserModal type={type} selectedId={selectedId} modal={modal} setModal={setModal} />
+            <UserModal type={type} selectedUser={selectedUser} modalOpen={modal} setModalOpen={setModal} />
         </section>
     )
 }

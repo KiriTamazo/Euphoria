@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\UserRequest;
 use App\Models\User;
 use Illuminate\Http\Request;
 
@@ -9,10 +10,13 @@ class AdminUserController extends Controller
 {
     public function index(User $user)
     {
-        return inertia('User/Index', ['users' => $user->paginate(10)]);
+        return inertia('User/Index', ['users' => $user->latest()->paginate(10)]);
     }
-    public function store()
+    public function store(UserRequest $request, User $user)
     {
+        $validatedData = $request->validated();
+        $user->create($validatedData);
+        return back()->with('success', 'User Created Successfully');
     }
     public function update()
     {
