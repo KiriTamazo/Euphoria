@@ -1,5 +1,6 @@
 /* eslint-disable no-unused-vars */
 import InputError from '@/Components/InputError'
+import InputLabel from '@/Components/InputLabel'
 import { Button } from '@/Components/ui/button'
 import { Dialog, DialogContent,DialogDescription, DialogFooter, DialogHeader, DialogTitle } from '@/Components/ui/dialog'
 import { Input } from '@/Components/ui/input'
@@ -55,33 +56,18 @@ const UserModal = ({modalOpen,setModalOpen,selectedUser,type}) => {
             Make changes to your profile here. Click save when you're done.
                     </DialogDescription> */}
                 </DialogHeader>
-                <div className="flex flex-col gap-4 py-4">
-                    <div className="items-center gap-4">
-                        <Label htmlFor="name" className="text-right">
-              User Name
-                        </Label>
-                        <Input
-                            name='username'
-                            id="username"
-                            className="col-span-3"
-                            value={data?.name}
-                            onChange={(e)=>{setData('name',e.target.value)}}
-                        />
-                    </div>
-                    <div className="items-center gap-4">
-                        <Label htmlFor="username" className="text-right">
-              Email
-                        </Label>
-                        <Input
-                            name='email'
-                            id="email"
-                            className="col-span-3"
-                            value={data?.email}
-                            onChange={(e)=>{setData('email',e.target.value)}}
-                        />
-                        <InputError message={errors?.email} />
-                    </div>
-                </div>
+                <InputLabel
+                    errors={errors}
+                    name='name'
+                    value={data?.name}
+                    onChange={(e)=>{setData('name',e.target.value)}}
+                />
+                <InputLabel 
+                    name="email" 
+                    value={data?.email} 
+                    handleChange={(e)=>{setData('email',e.target.value)}} 
+                    errors={errors} 
+                />
                 <DialogFooter>
                     <Button onClick={handleSubmit} isLoading={processing} variant='success' type="submit">{btnText}</Button>
                 </DialogFooter>

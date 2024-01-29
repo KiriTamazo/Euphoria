@@ -63,7 +63,7 @@ body {
     @apply bg-background;
 }
 .admin__layout {
-    @apply py-4 px-6;
+    @apply py-4 px-6 min-h-screen;
 }
 .page_item a {
     @apply py-1 px-3 flex justify-center items-center;

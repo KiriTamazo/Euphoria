@@ -8,6 +8,7 @@ import AuthLayout from '@/Layouts/AuthenticatedLayout'
 import { router } from '@inertiajs/react';
 import { useState } from 'react';
 import UserModal from './UserModal';
+import { Plus } from 'lucide-react';
 const items = [
     { label: 'Home', link: '/' },
     {
@@ -42,7 +43,7 @@ const Index = ({users}) => {
             <div className='bg-white py-6 px-8 rounded-md'>
                 <div className='flex justify-between items-center mb-8'>
                     <h1 className='text-xl '>Users</h1>
-                    <Button onClick={()=>handleOpenModal('create')}>Add User</Button>
+                    <Button btnIcon={<Plus className='w-5 h-5' />} onClick={()=>handleOpenModal('create')}>Add User</Button>
                 </div>
                 <Table 
                     renderItem={

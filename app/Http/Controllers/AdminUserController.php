@@ -18,8 +18,11 @@ class AdminUserController extends Controller
         $user->create($validatedData);
         return back()->with('success', 'User Created Successfully');
     }
-    public function update()
+    public function update(UserRequest $request, User $user)
     {
+        $validatedData = $request->validated();
+        $user->update($validatedData);
+        return back()->with('success', 'User Updated Successfully');
     }
     public function destroy(User $user)
     {
