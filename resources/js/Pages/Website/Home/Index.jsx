@@ -3,6 +3,7 @@ import HeroSection from './HeroSection'
 import CategorySection from './CategorySection'
 
 const Home = () => {
+    console.log(window.route('dashboard'))
     return (
         <main>
             <HeroSection />

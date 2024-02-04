@@ -14,6 +14,9 @@
         --primary-foreground: 210 40% 98%;
         --secondary: 210 40% 96.1%;
         --secondary-foreground: 222.2 47.4% 11.2%;
+        --success: 142.1 76.2% 36.3%;
+        --success-foreground: 355.7 100% 97.3%;
+
         --muted: 210 40% 96.1%;
         --muted-foreground: 215.4 16.3% 46.9%;
         --accent: 210 40% 96.1%;
@@ -38,6 +41,9 @@
         --primary-foreground: 222.2 47.4% 11.2%;
         --secondary: 217.2 32.6% 17.5%;
         --secondary-foreground: 210 40% 98%;
+        --success: 142.1 70.6% 45.3%;
+        --success-foreground: 144.9 80.4% 10%;
+
         --muted: 217.2 32.6% 17.5%;
         --muted-foreground: 215 20.2% 65.1%;
         --accent: 217.2 32.6% 17.5%;
@@ -50,15 +56,18 @@
         --text-color: 210 40% 98%;
     }
 }
-
-/* @layer base {
-    * {
-        @apply border-border;
-    }
-    body {
-        @apply bg-background text-foreground;
-    }
-} */
+html {
+    font-size: 16px;
+}
 body {
     @apply bg-background;
+}
+.admin__layout {
+    @apply py-4 px-6 min-h-screen;
+}
+.page_item a {
+    @apply py-1 px-3 flex justify-center items-center;
+}
+.page_item {
+    @apply rounded min-w-[20px] hover:bg-primary/80 transition-all duration-300 ease-linear hover:text-white cursor-pointer;
 }
