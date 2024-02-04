@@ -10,7 +10,7 @@ class AdminUserController extends Controller
 {
     public function index(User $user)
     {
-        return inertia('User/Index', ['users' => $user->latest()->paginate(10)]);
+        return inertia('Dashboard/User/Index', ['users' => $user->latest()->paginate(10)]);
     }
     public function store(UserRequest $request, User $user)
     {

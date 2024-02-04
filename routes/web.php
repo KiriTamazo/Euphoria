@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AdminDashboardController;
+use App\Http\Controllers\AdminProductController;
 use App\Http\Controllers\AdminUserController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Foundation\Application;
@@ -20,6 +21,9 @@ Route::name('admin.')->middleware(['auth', 'verified'])->group(function () {
     Route::post('/admin/users', [AdminUserController::class, 'store'])->name('users.store');
     Route::post('/admin/users/{user:id}', [AdminUserController::class, 'update'])->name('users.update');
     Route::delete('/admin/users/{user:id}', [AdminUserController::class, 'destroy'])->name('users.destroy');
+
+    // products
+    Route::get('/admin/products', [AdminProductController::class, 'index'])->name('products');
 });
 
 Route::middleware('auth')->group(function () {

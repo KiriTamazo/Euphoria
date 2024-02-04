@@ -17,6 +17,6 @@ class UserSeeder extends Seeder
         User::factory(['email' => fake()->safeEmail()])->create();
         User::factory(['email' => fake()->safeEmail()])->create();
         User::factory(['email' => fake()->safeEmail()])->create();
-        User::factory(10)->create();
+        User::factory(200)->create();
     }
 }

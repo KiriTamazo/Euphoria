@@ -4,11 +4,13 @@ import DeleteModal from '@/Components/DeleteModal';
 import  Table  from '@/Components/Table'
 import { Button } from '@/Components/ui/button';
 import { TableAction, TableCell } from '@/Components/ui/table';
-import AuthLayout from '@/Layouts/AuthenticatedLayout'
+import DashboardLayout from '@/Layouts/DashboardLayout'
 import { router } from '@inertiajs/react';
 import { useState } from 'react';
 import UserModal from './UserModal';
 import { Plus } from 'lucide-react';
+import EditButton from '@/Components/component/Dashboard/EditButton';
+import DeleteButton from '@/Components/component/Dashboard/DeleteButton';
 const items = [
     { label: 'Home', link: '/' },
     {
@@ -54,14 +56,15 @@ const Index = ({users}) => {
                                     <TableCell>{user?.name}</TableCell>
                                     <TableCell>{user?.email}</TableCell>
                                     <TableAction>
-                                        <Button onClick={()=>{
+                                        <EditButton handleEdit={()=>{
                                             handleOpenModal('edit')
                                             setSelectedUser(user)
-                                        }}>Edit</Button>
-                                        <Button variant="danger" onClick={()=>{
-                                            setDeleteModal(true)
-                                            setSelectedUser(user)
-                                        }}>Delete</Button>
+                                        }} />
+                                        <DeleteButton
+                                            handleDelete={()=>{
+                                                setDeleteModal(true)
+                                                setSelectedUser(user)}}
+                                        />
                                     </TableAction>
                                 </>)}
                     }
@@ -72,5 +75,5 @@ const Index = ({users}) => {
         </section>
     )
 }
-Index.layout = (page) => <AuthLayout>{page}</AuthLayout>
+Index.layout = (page) => <DashboardLayout>{page}</DashboardLayout>
 export default Index

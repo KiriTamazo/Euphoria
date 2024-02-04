@@ -1,4 +1,4 @@
-import AuthLayout from '@/Layouts/AuthenticatedLayout'
+import DashboardLayout from '@/Layouts/DashboardLayout'
  
 const Index = () => {
     return (
@@ -9,5 +9,5 @@ const Index = () => {
         </section>
     )
 }
-Index.layout = (page) => <AuthLayout>{page}</AuthLayout>
+Index.layout = (page) => <DashboardLayout>{page}</DashboardLayout>
 export default Index

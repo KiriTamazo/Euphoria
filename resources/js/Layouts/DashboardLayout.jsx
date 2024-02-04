@@ -1,11 +1,11 @@
 /* eslint-disable no-unused-vars */
 import { useState } from 'react';
-import DashboardSidebar from '@/Components/component/DashboardSidebar';
+import DashboardSidebar from '@/Components/component/Dashboard/DashboardSidebar';
 import { Toaster } from '@/Components/ui/toaster';
 import { useEffect } from 'react';
 import { usePage } from '@inertiajs/react';
 
-export default function AuthLayout({ user, header, children }) {
+export default function DashboardLayout({ user, header, children }) {
     const [menuActive,setMenuActive] =useState(true)
     useEffect(()=>{
 

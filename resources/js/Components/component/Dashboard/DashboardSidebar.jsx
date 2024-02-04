@@ -3,9 +3,9 @@
 import { sidebarLinks } from '@/helpers/links'
 import { ChevronLeft } from 'lucide-react'
 import { useState } from 'react'
-import { Button } from '../ui/button'
+import { Button } from '../../ui/button'
 import { router } from '@inertiajs/react'
-import DeleteModal from '../DeleteModal'
+import DeleteModal from '../../DeleteModal'
 
 const DashboardSidebar = ({menuActive,setMenuActive}) => {
     const [menuHover,setMenuHover] = useState(false)
