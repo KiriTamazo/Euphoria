@@ -12,10 +12,12 @@ import { Plus } from 'lucide-react';
 import EditButton from '@/Components/component/Dashboard/EditButton';
 import DeleteButton from '@/Components/component/Dashboard/DeleteButton';
 const items = [
-    { label: 'Home', link: '/' },
+    {
+        label: 'Dashboard',
+        link: 'admin.dashboard'
+    },
     {
         label:'Users',
-        // link:'admin/users',
     }
 ]
 const columns = [

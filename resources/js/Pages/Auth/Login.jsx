@@ -16,18 +16,17 @@ export default function Login({ status, canResetPassword }) {
         remember: false,
     });
 
-    useEffect(() => {
-        return () => {
-            reset('password');
-        };
-    }, []);
+    // useEffect(() => {
+    //     return () => {
+    //         reset('password');
+    //     };
+    // }, []);
 
     const submit = (e) => {
         e.preventDefault();
 
         post(window.route('login'));
     };
-    console.log(errors)
     return (
         // <div>Login</div>
         <GuestLayout>
@@ -41,7 +40,7 @@ export default function Login({ status, canResetPassword }) {
                     type="email"
                     name="email"
                     autoComplete="username"
-                    isFocused={true}
+                    // isFocused={true}
                     errors={errors}
                     handleChange={(e) => setData('email', e.target.value)}
                     value={data.email} 
@@ -52,7 +51,7 @@ export default function Login({ status, canResetPassword }) {
                     type="password"
                     name="password"
                     autoComplete="username"
-                    isFocused={true}
+                    // isFocused={true}
                     errors={errors}
                     handleChange={(e) => setData('password', e.target.value)}
                     value={data.password} 
