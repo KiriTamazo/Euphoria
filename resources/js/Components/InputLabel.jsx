@@ -5,8 +5,9 @@ import { Input } from './ui/input'
 import { Label } from './ui/label'
 import { useState ,useEffect} from 'react'
 
-const InputLabel = ({value,handleChange,name,type='edit', labelClass,className,wrapperClassName, errors,...props}) => {
-    const [show,setShow] = useState(errors ? true :false)
+const InputLabel = ({value,handleChange,name,type, labelClass,className,wrapperClassName, errors,...props}) => {
+    const [show,setShow] = useState(errors?.length > 0 ? true :false)
+
     useEffect(()=>{
         if(errors[name]){
             setShow(true)
@@ -14,19 +15,20 @@ const InputLabel = ({value,handleChange,name,type='edit', labelClass,className,w
     },[errors])
 
     useEffect(()=>{
-        if(value === ''){
+        if(value === '' && errors[name]){
             setShow(true)
         }else{
             setShow(false)
         }
     },[value])
-    console.log(errors,'error')
+    console.log(props)
     return (
         <div className={cn('flex flex-col gap-2',wrapperClassName)}>
             <Label htmlFor="username" className={cn('capitalize',labelClass)}>
                 {name}
             </Label>
             <Input
+                type={type}
                 name={name}
                 id={name}
                 className={cn('col-span-3',className)}

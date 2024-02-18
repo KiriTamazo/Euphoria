@@ -5,7 +5,6 @@ const containerVariants = {
 };
 
 export default function InputError({show, message, className = '', ...props }) {
-    console.log(show)
     return (
         <AnimatePresence>
             {show ? 
