@@ -9,9 +9,18 @@ class Product extends Model
 {
     use HasFactory;
 
-    public function category()
+    public function categories()
     {
-        return $this->belongsTo(Category::class);
+        return $this->belongsToMany(Category::class, 'product_category')->withTimestamps();
     }
 
+    public function brand()
+    {
+        return $this->belongsTo(Brand::class);
+    }
+
+    public function skus()
+    {
+        return $this->hasMany(Sku::class);
+    }
 }

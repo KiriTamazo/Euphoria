@@ -6,21 +6,24 @@ use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
 {
-
+    /**
+     * Run the migrations.
+     */
     public function up(): void
     {
-        Schema::create('categories', function (Blueprint $table) {
+        Schema::create('attribute_options', function (Blueprint $table) {
             $table->id();
-            $table->unique(['name']);
-            $table->string('name')->nullable();
-            $table->string('slug')->unique();
-            $table->string('image')->nullable();
+            $table->foreignId('attribute_id')->constrained();
+            $table->string('value');
             $table->timestamps();
         });
     }
 
+    /**
+     * Reverse the migrations.
+     */
     public function down(): void
     {
-        Schema::dropIfExists('categories');
+        Schema::dropIfExists('attribute_options');
     }
 };

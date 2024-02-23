@@ -5,12 +5,12 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Category extends Model
+class Attribute extends Model
 {
     use HasFactory;
 
-    public function products()
+    public function attributeOptions(): HasMany
     {
-        return $this->belongsToMany(Product::class, 'product_category')->withTimestamps();
+        return $this->hasMany(AttributeOption::class);
     }
 }
