@@ -1,7 +1,7 @@
 /* eslint-disable no-unused-vars */
 
 import { sidebarLinks } from '@/helpers/links'
-import { ChevronLeft } from 'lucide-react'
+import { ChevronDown, ChevronLeft, LogOutIcon } from 'lucide-react'
 import { useState } from 'react'
 import { Button } from '../../ui/button'
 import { router } from '@inertiajs/react'
@@ -10,6 +10,8 @@ import DeleteModal from '../../DeleteModal'
 const DashboardSidebar = ({menuActive,setMenuActive}) => {
     const [menuHover,setMenuHover] = useState(false)
     const [modal,setModal] = useState(false)
+    const [selectedNavId,setSelectedNavId] = useState(null);
+    const [subNavOpen,setSubNavOpen] = useState(false)
     const handleLogout = () =>{
         router.post(window.route('logout'))
     }
@@ -32,16 +34,54 @@ const DashboardSidebar = ({menuActive,setMenuActive}) => {
             <ul className="flex flex-col flex-1 overflow-x-hidden">
                 {sidebarLinks?.map((link,i)=>{
                     return   (
-                        <li key={i} onClick={()=>handleRedirect(link?.url)}>
-                            <div className='flex my-[.4rem] py-2 px-2 mx-4 rounded bg-primary/20 text-primary  items-center  '>
+                        !link?.children ? <li key={i} className='flex my-[.4rem] py-2 px-2 mx-4 rounded bg-primary/20 text-primary  items-center ' onClick={()=>handleRedirect(link?.url)}>
+                            <span className={'inline-flex justify-center items-center ml-[.7rem]'}> {link?.icon}</span> 
+                            <p className={'ml-4  text-base tracking-wide truncate'}>{link?.name}</p>
+                        </li> : <>
+                            <li 
+                                onClick={()=>{
+                                    console.log(i,selectedNavId);
+                                    if(selectedNavId === i){
+                                        setSubNavOpen(false)
+                                        setSelectedNavId(null)
+                                    }else{
+                                        setSubNavOpen(true)
+                                        setSelectedNavId(i)
+                                    }
+                                }}  
+                                key={i} 
+                                className='flex my-[.4rem] py-2 px-2 mx-4 rounded bg-primary/20 text-primary  items-center' 
+                            >
                                 <span className={'inline-flex justify-center items-center ml-[.7rem]'}> {link?.icon}</span> 
-                                <p className={'ml-4  text-base tracking-wide truncate'}>{link?.name}</p>
-                            </div>
-                        </li>)
+                                <p className={'ml-4 flex-1  text-base tracking-wide truncate'}>{link?.name}</p>
+                                <ChevronDown className='w-5 h-5' />
+                            </li>
+                            <li
+                                style={{
+                                    height: (subNavOpen && selectedNavId === i)  ? `${link?.children?.length + 5}rem` : '0px'
+                                }}
+                                className='bg-blue-500 flex items-center mx-4 overflow-hidden transition-all duration-300 rounded '
+                            >
+                                <div className='py-2 space-y-2 w-full'>
+                                    {(menuActive || menuHover) && link?.children?.map((item,idx)=>(
+                                        <div  
+                                            className={`${(menuActive || menuHover) ? '':'sr-only'} mx-2 py-2 px-4 bg-slate-600 rounded transition-all`} key={idx}>
+                                            <p>{item?.name}</p>
+                                        </div>
+                                    ))}
+                                </div>
+                            </li>
+                        </>
+                    )   
 
                 })}
             </ul>
-            <Button onClick={handleLogout} variant='danger' className="w-[90%] mb-2 !mx-auto">Logout</Button>
+            <Button btnIcon={<LogOutIcon className='w-5 h-5' />} 
+                onClick={handleLogout} variant='danger' className={`w-full block ${menuHover|| menuActive ? 'w-[90%] justify-start':''}  px-6 mb-2 `}>
+                <span className={`${!menuHover ? 'sr-only':''}`}>
+                    Logout
+                </span>
+            </Button>
         </aside>
     )
 }
