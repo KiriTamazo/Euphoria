@@ -8,6 +8,9 @@ use Illuminate\Database\Eloquent\Model;
 class Sku extends Model
 {
     use HasFactory;
+    protected $casts = [
+        'image_urls' => 'array'
+    ];
     protected function price(): Attribute
     {
         return Attribute::make(
@@ -24,5 +27,9 @@ class Sku extends Model
     public function attributeOptions()
     {
         return $this->belongsToMany(AttributeOption::class);
+    }
+    public function orderItems()
+    {
+        return $this->hasMany(OrderItem::class);
     }
 }
