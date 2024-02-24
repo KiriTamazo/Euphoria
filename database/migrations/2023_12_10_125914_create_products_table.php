@@ -12,14 +12,12 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->string('slug');
-            $table->longText('description');
+            $table->longText('description')->nullable();
             $table->unsignedBigInteger('category_id');
+            $table->unsignedBigInteger('user_id');
             $table->unsignedBigInteger('brand_id');
             $table->string('image_url');
             $table->timestamps();
-
-            // $table->foreign('category_id')->references('id')->on('categories')->onDelete('cascade');
-            // $table->foreign('brand_id')->references('id')->on('brands')->onDelete('cascade');
         });
     }
 

@@ -16,6 +16,7 @@ return new class extends Migration
             $table->foreignId('product_id')->constrained();
             $table->string('code');
             $table->integer('price');
+            $table->json('image_urls');
             $table->timestamps();
         });
     }
