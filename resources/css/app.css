@@ -71,3 +71,6 @@ body {
 .page_item {
     @apply rounded min-w-[20px] hover:bg-primary/80 transition-all duration-300 ease-linear hover:text-white cursor-pointer;
 }
+.navlink.active {
+    @apply bg-primary/20 text-slate-900;
+}
